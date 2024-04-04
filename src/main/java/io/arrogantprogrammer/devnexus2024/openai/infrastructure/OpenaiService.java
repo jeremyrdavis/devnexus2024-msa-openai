@@ -1,7 +1,7 @@
 package io.arrogantprogrammer.devnexus2024.openai.infrastructure;
 
-import io.arrogantprogrammer.devnexus2024.openai.domain.PoemTopic;
-import io.arrogantprogrammer.devnexus2024.openai.domain.PoemWith;
+import io.smallrye.mutiny.Uni;
+import io.smallrye.mutiny.infrastructure.Infrastructure;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.slf4j.Logger;
@@ -20,15 +20,14 @@ public class OpenaiService {
         return whoIs;
     }
 
-    public String poemAbout(PoemTopic poemTopic) {
-        String poem = openaiClient.writeAPoem(poemTopic.characterName(), poemTopic.poet());
-        LOGGER.info("poem: {}", poem);
-        return poem;
+    public String poemAbout(final String poemTopic, final String poet) {
+        LOGGER.debug("Retrieving a poem about {} in the style of {}", poemTopic, poet);
+        return openaiClient.writeAPoem(poemTopic, poet);
     }
 
-    public String poemWith(PoemWith poemWith) {
-        String poem = openaiClient.addThisToThePoem(poemWith.poem(), poemWith.withTopic());
-        LOGGER.info("poem: {}", poem);
-        return poem;
+    public String poemWith(final String poem, final String withTopic) {
+        LOGGER.debug("Retrieving a poem with {}", withTopic);
+        String poemWith = openaiClient.addThisToThePoem(withTopic, poem);
+        return poemWith;
     }
 }
