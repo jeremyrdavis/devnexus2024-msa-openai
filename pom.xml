@@ -10,12 +10,12 @@
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <quarkus.langchain4j-openai.version>0.10.2</quarkus.langchain4j-openai.version>
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>3.8.3</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.2.5</surefire-plugin.version>
-    <quarkus.langchain4j-openai.version>0.10.2</quarkus.langchain4j-openai.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -42,10 +42,13 @@
       <artifactId>quarkus-langchain4j-openai</artifactId>
       <version>${quarkus.langchain4j-openai.version}</version>
     </dependency>
-    <!-- Test dependencies -->
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-jacoco</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-kubernetes</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
