@@ -14,7 +14,7 @@ spec:
     - name: http
       port: 80
       protocol: TCP
-      targetPort: 8082
+      targetPort: 8080
   selector:
     app.kubernetes.io/name: devnexus2024-msa-openai
   type: ClusterIP
@@ -54,10 +54,10 @@ spec:
                 secretKeyRef:
                   key: OPENAI_KEY
                   name: devnexus2024-msa-secrets
-          image: docker.io/jeremydavis/devnexus2024-msa-openai
+          image: docker.io/jeremydavis/devnexus2024-msa-openai:1.4
           imagePullPolicy: Always
           name: devnexus2024-msa-openai
           ports:
-            - containerPort: 8082
+            - containerPort: 8080
               name: http
               protocol: TCP
