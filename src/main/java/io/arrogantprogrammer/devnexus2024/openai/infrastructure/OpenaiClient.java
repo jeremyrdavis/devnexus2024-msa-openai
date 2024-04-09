@@ -3,7 +3,7 @@ package io.arrogantprogrammer.devnexus2024.openai.infrastructure;
 import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
 
-@RegisterAiService
+@RegisterAiService(modelName="m1")
 public interface OpenaiClient {
 
     @UserMessage("""
